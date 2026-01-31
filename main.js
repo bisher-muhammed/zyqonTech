@@ -326,3 +326,36 @@ if (revealItems.length) {
     observer.observe(item);
   });
 }
+
+const servicesFrame = document.querySelector(".canvas-frame.tall");
+const servicesImages = document.querySelectorAll(".services-image");
+if (servicesFrame && servicesImages.length >= 2) {
+  const [firstImage, secondImage] = servicesImages;
+  const swap = (showSecond) => {
+    firstImage.classList.toggle("is-visible", !showSecond);
+    secondImage.classList.toggle("is-visible", showSecond);
+  };
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          swap(entry.intersectionRatio >= 0.5);
+        });
+      },
+      { threshold: [0, 0.5, 1] }
+    );
+    observer.observe(servicesFrame);
+  } else {
+    const onScrollSwap = () => {
+      const rect = servicesFrame.getBoundingClientRect();
+      if (rect.height <= 0) return;
+      const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+      const ratio = Math.max(0, visibleHeight) / rect.height;
+      swap(ratio >= 0.5);
+    };
+    onScrollSwap();
+    window.addEventListener("scroll", onScrollSwap, { passive: true });
+    window.addEventListener("resize", onScrollSwap);
+  }
+}
