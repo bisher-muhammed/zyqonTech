@@ -786,6 +786,15 @@ main {
   font-size: 14px;
 }
 
+.footer-link {
+  color: var(--silver-dark);
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: #d7d7d7;
+}
+
 .socials {
   display: flex;
   align-items: center;
