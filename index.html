@@ -3,7 +3,57 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Zyqon | Software & Marketing Studio</title>
+    <title>ZyQon Technologies | Software, Apps & Digital Growth</title>
+    <meta
+      name="description"
+      content="ZyQon Technologies builds custom software, mobile apps, UI/UX, branding, and digital marketing to help businesses grow smarter."
+    />
+    <meta
+      name="keywords"
+      content="zyqon, zyqontech, app, build, zykon, syqon, zyqon, tech, syqo, software development, mobile apps, UI UX design, digital marketing, branding, web development, automation, AI solutions"
+    />
+    <meta name="author" content="ZyQon Technologies" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#050505" />
+
+    <meta property="og:title" content="ZyQon Technologies | Software, Apps & Digital Growth" />
+    <meta
+      property="og:description"
+      content="Custom software, mobile apps, UI/UX, branding, and marketing services to accelerate business growth."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ZyQon Technologies" />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ZyQon Technologies | Software, Apps & Digital Growth" />
+    <meta
+      name="twitter:description"
+      content="ZyQon Technologies delivers software, mobile apps, UI/UX, branding, and marketing that drive real growth."
+    />
+
+    <link rel="icon" href="images/ico/favicon.ico" sizes="any" />
+    <link rel="icon" href="images/ico/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="images/ico/apple-touch-icon.png" />
+    <link
+      rel="icon"
+      href="images/ico/favicon-96x96.png"
+      type="image/png"
+      sizes="96x96"
+    />
+    <link
+      rel="icon"
+      href="images/ico/web-app-manifest-192x192.png"
+      type="image/png"
+      sizes="192x192"
+    />
+    <link
+      rel="icon"
+      href="images/ico/web-app-manifest-512x512.png"
+      type="image/png"
+      sizes="512x512"
+    />
+    <link rel="manifest" href="images/ico/site.webmanifest" />
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -43,7 +93,7 @@
               mobile apps to custom software, web experiences, and beyond.
             </p>
             <div class="actions">
-              <a class="btn primary" href="#contact">Get Started</a>
+              <a class="btn primary" href="#about">Get Started</a>
               <a class="btn ghost" href="#products">Explore Our Products</a>
             </div>
             <div class="stats">
@@ -72,7 +122,7 @@
                     <img src="./images/1.png" alt="Product interface preview" />
                   </div>
                   <div class="mockup-chart">
-                    <span class="mockup-chart-label">Explore</span>
+                   <span class="mockup-chart-label"><a href="#products">Explore</a></span>
                   </div>
                   <div class="mockup-row"></div>
                   <div class="mockup-row short"></div>
@@ -228,21 +278,57 @@
           <p class="kicker">Let’s build</p>
           <h2>Let’s talk about your business idea or software needs.</h2>
         </div>
-        <form class="contact-form">
+        <form
+          id="contact-form"
+          class="contact-form"
+          action="https://formspree.io/f/mojlkjay"
+          method="POST"
+        >
+          <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
           <div class="field">
             <label for="name">Name</label>
-            <input id="name" type="text" placeholder="Your name" required />
+            <input
+              id="name"
+              name="name"
+              type="text"
+              placeholder="Your name"
+              required
+            />
           </div>
+
           <div class="field">
             <label for="email">Email</label>
-            <input id="email" type="email" placeholder="you@company.com" required />
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="you@company.com"
+              required
+            />
           </div>
+
           <div class="field">
             <label for="message">Message</label>
-            <textarea id="message" rows="4" placeholder="Tell us what you want to build"></textarea>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              placeholder="Tell us what you want to build"
+            ></textarea>
           </div>
+
+          <!-- Optional extras -->
+          <input type="hidden" name="_subject" value="New contact form message">
+          <input type="text" name="_gotcha" style="display:none">
+
           <button class="btn primary" type="submit">Send Message</button>
         </form>
+
+        <div id="contact-thankyou" class="contact-thankyou" hidden>
+          <h3>Thank you!</h3>
+          <p>We received your message and will get back to you soon.</p>
+        </div>
+
       </section>
 
       <footer class="footer">

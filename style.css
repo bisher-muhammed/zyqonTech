@@ -486,6 +486,7 @@ main {
   inset: 18% 16%;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 12px;
+  pointer-events: none;
 }
 
 .mockup-chart-label {
@@ -497,6 +498,15 @@ main {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--silver);
+  z-index: 1;
+}
+
+.mockup-chart-label a {
+  color: inherit;
+}
+
+.mockup-chart-label a:hover {
+  color: var(--white);
 }
 
 .mockup-row {
@@ -680,6 +690,33 @@ main {
   display: grid;
   gap: 16px;
   max-width: 520px;
+}
+
+.form-status {
+  min-height: 20px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--silver);
+}
+
+.contact-thankyou {
+  margin-top: 18px;
+  padding: 18px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+  color: #f4f4f4;
+  backdrop-filter: blur(8px);
+}
+
+.contact-thankyou h3 {
+  margin: 0 0 6px 0;
+}
+
+.contact-thankyou p {
+  margin: 0;
+  opacity: 0.9;
 }
 
 .field {
