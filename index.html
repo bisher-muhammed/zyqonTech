@@ -281,8 +281,10 @@
         <form
           id="contact-form"
           class="contact-form"
-          action="https://formspree.io/f/mojlkjay"
+          action="javascript:void(0)"
+          data-endpoint="https://script.google.com/macros/s/AKfycbyM_vEgMPDR-nVT8HYFTCsFXIxkB0PJIkIHzh-cUYjd7w3u4DqZSIKZmpsFIArSaoymtw/exec"
           method="POST"
+          novalidate
         >
           <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
           <div class="field">
@@ -369,6 +371,63 @@
       </footer>
     </div>
 
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("contact-form");
+        const statusEl = document.getElementById("form-status");
+        const thankYou = document.getElementById("contact-thankyou");
+        if (!form) return;
+
+        const endpoint =
+          form.dataset.endpoint && form.dataset.endpoint.trim()
+            ? form.dataset.endpoint.trim()
+            : form.action;
+
+        form.addEventListener("submit", async (event) => {
+          event.preventDefault();
+          if (statusEl) statusEl.textContent = "Sending...";
+
+          const nameInput = form.querySelector('[name="name"]');
+          const emailInput = form.querySelector('[name="email"]');
+          const messageInput = form.querySelector('[name="message"]');
+
+          const payload = {
+            name: nameInput ? nameInput.value.trim() : "",
+            email: emailInput ? emailInput.value.trim() : "",
+            message: messageInput ? messageInput.value.trim() : "",
+            page: window.location.href,
+          };
+
+          if (!payload.name || !payload.email) {
+            if (statusEl) statusEl.textContent = "Please enter your name and email.";
+            return;
+          }
+
+          try {
+            const response = await fetch(endpoint, {
+              method: "POST",
+              headers: { "Content-Type": "text/plain;charset=utf-8" },
+              body: JSON.stringify(payload),
+            });
+
+            const data = await response.json();
+
+            if (response.ok && data.ok) {
+              form.hidden = true;
+              if (thankYou) thankYou.hidden = false;
+              form.reset();
+              if (statusEl) statusEl.textContent = "";
+            } else {
+              const message =
+                (data && data.error) || "Sorry — something went wrong. Please try again.";
+              if (statusEl) statusEl.textContent = message;
+            }
+          } catch (error) {
+            if (statusEl) statusEl.textContent = "Network error. Please try again.";
+          }
+        });
+      });
+    </script>
     <script type="module" src="main.js"></script>
   </body>
 </html>
